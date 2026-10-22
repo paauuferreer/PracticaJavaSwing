@@ -1,0 +1,7 @@
+﻿target/
+*.class
+.nb-gradle/
+.settings/
+nbproject/private/
+build/
+dist/
