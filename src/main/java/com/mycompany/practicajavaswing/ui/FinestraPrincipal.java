@@ -14,6 +14,7 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     }
 
     private void personalitzarTaula() {
+        jTableLloguers.setDefaultRenderer(Object.class, new RenderitzadorTaulaLloguers());
         jTableLloguers.setRowHeight(24);
     }
 
@@ -55,14 +56,14 @@ public class FinestraPrincipal extends javax.swing.JFrame {
         jMenuItemBorrarJoc = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("GestiÃ³ de Lloguer de Videojocs");
+        setTitle("Gestió de Lloguer de Videojocs");
 
         jTableLloguers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "NÃºm. registre", "TÃ­tol del joc", "Usuari que l'ha llogat", "Plataforma", "Data d'inici", "Data de tornada", "GÃ¨nere"
+                "Núm. registre", "Títol del joc", "Usuari que l'ha llogat", "Plataforma", "Data d'inici", "Data de tornada", "Gènere"
             }
         ) {
             Class[] types = new Class [] {
@@ -175,21 +176,45 @@ public class FinestraPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemRegistrarLloguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRegistrarLloguerActionPerformed
+        DialegLloguer dialeg = new DialegLloguer(this, true);
+        dialeg.setVisible(true);
+        if (dialeg.isRegistrat()) {
+            actualitzarTaula();
+        }
     }//GEN-LAST:event_jMenuItemRegistrarLloguerActionPerformed
 
     private void jMenuItemTornarLloguerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTornarLloguerActionPerformed
+        DialegTornarLloguer dialeg = new DialegTornarLloguer(this, true);
+        dialeg.setVisible(true);
+        if (dialeg.isModificat()) {
+            actualitzarTaula();
+        }
     }//GEN-LAST:event_jMenuItemTornarLloguerActionPerformed
 
     private void jMenuItemCrearUsuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearUsuariActionPerformed
+        DialegUsuaris dialeg = new DialegUsuaris(this, true);
+        dialeg.setVisible(true);
     }//GEN-LAST:event_jMenuItemCrearUsuariActionPerformed
 
     private void jMenuItemBorrarUsuariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarUsuariActionPerformed
+        DialegBorrarUsuari dialeg = new DialegBorrarUsuari(this, true);
+        dialeg.setVisible(true);
+        if (dialeg.isEsborrat()) {
+            actualitzarTaula();
+        }
     }//GEN-LAST:event_jMenuItemBorrarUsuariActionPerformed
 
     private void jMenuItemCrearJocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearJocActionPerformed
+        DialegJocs dialeg = new DialegJocs(this, true);
+        dialeg.setVisible(true);
     }//GEN-LAST:event_jMenuItemCrearJocActionPerformed
 
     private void jMenuItemBorrarJocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBorrarJocActionPerformed
+        DialegBorrarJoc dialeg = new DialegBorrarJoc(this, true);
+        dialeg.setVisible(true);
+        if (dialeg.isEsborrat()) {
+            actualitzarTaula();
+        }
     }//GEN-LAST:event_jMenuItemBorrarJocActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
